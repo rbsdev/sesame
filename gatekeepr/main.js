@@ -38,9 +38,11 @@ app.post('/open', function(request, response) {
 
   gpio.open(pin, "output", function(err) {
     gpio.write(pin, 1, function() {
-      gpio.write(pin, 0, function() {
-        gpio.close(pin);
-      });
+      setTimeout(function() {
+        gpio.write(pin, 0, function() {
+          gpio.close(pin);
+        });
+      }, 1000);
     });
   });
 

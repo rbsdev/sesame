@@ -11,6 +11,8 @@ router.get('/', function(req, res) {
   
   } else {
 
+  	console.log(foursquare);
+
     res.redirect(foursquare.getAuthorizeUrl(config.callback));
 
   };

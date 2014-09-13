@@ -3,7 +3,7 @@ var express = require('express'),
     config  = require('../config'),
     foursquare = require('../foursquare');
 
-router.get('/connect', function(req, res) {
+router.get('/', function(req, res) {
 
   if (req.session.foursquare) {
   

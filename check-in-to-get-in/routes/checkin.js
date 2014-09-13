@@ -2,7 +2,7 @@ var express = require('express'),
 		router 	= express.Router(),
 		config 	= require('../config');
 
-router.post('/checkin', function(req, res) {
+router.post('/', function(req, res) {
 
 	var checkin = request.param('checkin');
 

@@ -3,7 +3,7 @@ var express = require('express'),
 		config  = require('../config'),
 		foursquare = require('../foursquare');
 
-router.get('/callback', function(req, res) {
+router.get('/', function(req, res) {
 
 	var code = req.param('code'),
 	callback = function(err, access_token, refresh_token, results) {

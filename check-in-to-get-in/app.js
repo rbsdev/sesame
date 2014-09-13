@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded())
 	 .use(cookieParser())
 	 .use(session(config.session));
 
-var index    = require('./routes'),
+var index = require('./routes'),
 		connect  = require('./routes/connect'),
 		callback = require('./routes/callback'),
 		checkin  = require('./routes/checkin');
@@ -24,7 +24,7 @@ app.use('/', index)
 	 .use(function(err, req, res, next) {
 			 
 			 res.status(err.status || 500);
-			 res.render('error', err.message);
+			 res.send(err.status || 500, err.message);
 
 		});
 

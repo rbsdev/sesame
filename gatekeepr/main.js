@@ -1,6 +1,7 @@
 var app,
     bodyParser = require('body-parser'),
     child_process = require('child_process'),
+    day,
     express = require('express'),
     fs = require('fs'),
     isBusinessHours = false,
@@ -103,7 +104,8 @@ app.post('/open', function(request, response) {
 
   if (hasUserId) {
     now = new Date();
-    isBusinessHours = now.getHours() > 9 && now.getHours() < 19;
+    day = now.toDateString().substr(0, 3).toLowerCase();
+    isBusinessHours = now.getHours() > 9 && now.getHours() < 19 && ['mon', 'tue', 'wed', 'thu', 'fri'].indexOf(day) != 1;
     isBusinessHours = true;
 
     if (list.black.indexOf(userId) != -1 || !isBusinessHours) {

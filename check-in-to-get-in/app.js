@@ -17,6 +17,17 @@ var index = require('./routes'),
 		callback = require('./routes/callback'),
 		checkin  = require('./routes/checkin');
 
+app.use(function(req, res, next){
+
+	console.log('REQUEST!!!!!!!!!!!!!!1');
+	console.log(req.method);
+	console.log(req.url);
+	console.log(req.body)
+
+	next();
+
+});
+
 app.use('/', index)
 	 .use('/connect', connect)
 	 .use('/callback', callback)

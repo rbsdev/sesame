@@ -4,7 +4,7 @@ var express = require('express'),
 
 router.post('/', function(req, res) {
 
-	console.log('Checkin', req);
+	console.log('Checkin');
 
 	var checkin = request.param('checkin');
 

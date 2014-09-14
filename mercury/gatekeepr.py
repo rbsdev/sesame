@@ -15,6 +15,6 @@ class GatekeeprClient(object):
             params={"mac_address": mac_address},
         )
         if response.status_code != 200:
-            print "Gatekeepr return fail code {0}".format(response.status_code)
+            logging.error("Gatekeepr returned code {0}".format(response.status_code))
 
 

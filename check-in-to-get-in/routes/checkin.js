@@ -16,7 +16,7 @@ router.post('/', function(req, res) {
 
 		var data = JSON.stringify({
 			user_id : checkin.user.id,
-			user_name : checkin.user.firstname
+			user_name : checkin.user.firstName
 		});
 
 		var headers = {

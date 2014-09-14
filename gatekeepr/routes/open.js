@@ -45,7 +45,7 @@ isBusinessHours = function() {
 };
 
 speak = function(message) {
-  child_process.exec('sh say.sh "' + message + '"', {
+  child_process.exec('sh say.sh ' + message, {
     cwd: path.resolve(__dirname, '..')
   });
 };

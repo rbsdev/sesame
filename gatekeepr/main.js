@@ -63,15 +63,13 @@ app.post('/open', function(request, response) {
   }
 
   if (true) {
-    log('python gpio.py; %s', __dirname);
-
     child_process.exec('python gpio.py', {
       cwd: __dirname
     });
 
     response.send({
       error: false,
-      message: '',
+      message: 'welcome',
       success: true
     });
 

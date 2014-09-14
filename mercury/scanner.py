@@ -26,13 +26,13 @@ class DeviceScanner(object):
         while True:
             time.sleep(1)
             for path in adapter.ListDevices():
-                    device = dbus.Interface(bus.get_object("org.bluez", path),
-                                                            "org.bluez.Device")
-                    properties = device.GetProperties()
-                    if properties["Address"] not in blacklisted:
-                    	callback(properties['Address'])
-                        path = adapter.FindDevice(properties['Address'])
-                        adapter.RemoveDevice(path)
+                device = dbus.Interface(bus.get_object("org.bluez", path),
+                                                        "org.bluez.Device")
+                properties = device.GetProperties()
+                if properties["Address"] not in blacklisted:
+                    callback(properties['Address'])
+                    path = adapter.FindDevice(properties['Address'])
+                    adapter.RemoveDevice(path)
 
 if __name__ == "__main__":
     d = DeviceScanner()

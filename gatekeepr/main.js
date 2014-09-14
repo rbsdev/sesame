@@ -63,9 +63,9 @@ app.post('/open', function(request, response) {
   }
 
   if (true) {
-    log('python trigger.py; %s', '__dirname');
+    log('python gpio.py; %s', __dirname);
 
-    child_process.exec('python trigger.py', {
+    child_process.exec('python gpio.py', {
       cwd: __dirname
     });
 

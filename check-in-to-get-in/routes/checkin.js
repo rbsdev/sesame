@@ -12,12 +12,15 @@ router.post('/', function(req, res) {
 
 	if (checkin) {
 
-		checkin = JSON.parse(checkin);
+		_checkin = JSON.parse(checkin);
 
 		var data = JSON.stringify({
-			user_id : checkin.user.id,
-			user_name : checkin.user.firstname
+			user_name : _checkin.user.firstName,
+			user_id : _checkin.user.id,
 		});
+
+		console.log(_checkin.user.firstName)
+		console.log(_checkin)
 
 		var headers = {
 			'Content-Type': 'application/json',

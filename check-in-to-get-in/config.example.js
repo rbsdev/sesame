@@ -4,7 +4,7 @@ var config = {
 	"push_secret": "",
 	"callback": {
 		"response_type": "code",
-		"redirect_uri": "/callback",
+		"redirect_uri": "https://179.184.113.212/callback",
 		"grant_type": "authorization_code"
 	},
 	"ssl": {

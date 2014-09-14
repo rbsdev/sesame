@@ -2,12 +2,27 @@ var app,
     bodyParser = require('body-parser'),
     child_process = require('child_process'),
     express = require('express'),
+    fs = require('fs'),
+    isBusinessHours = false,
+    list,
     log = require('./log'),
     minimist = require('minimist'),
+    now,
     options,
     os = require('os');
 
 app = express();
+
+fs.exists('list.json', function(exists) {
+  if (exists) {
+    list = require('list');
+  } else {
+    list = {
+      black: [ ],
+      white: [ ]
+    };
+  }
+});
 
 options = minimist(process.argv.slice(2), {
   alias: {
@@ -62,8 +77,16 @@ app.post('/open', function(request, response) {
     return;
   }
 
-  if (true) {
-    log('python gpio.py; %s', __dirname);
+  if (hasMacAddress) {
+    if (list.black.indexOf(macAddress) != -1 || list.white.indexOf(macAddress) == -1) {
+      response.send({
+        error: true,
+        message: 'you\'re not allowed, bounce',
+        success: false
+      });
+
+      return;
+    }
 
     child_process.exec('python gpio.py', {
       cwd: __dirname
@@ -71,7 +94,35 @@ app.post('/open', function(request, response) {
 
     response.send({
       error: false,
-      message: '',
+      message: 'welcome',
+      success: true
+    });
+
+    return;
+  }
+
+  if (hasUserId) {
+    now = new Date();
+    isBusinessHours = now.getHours() > 9 && now.getHours() < 19;
+    isBusinessHours = true;
+
+    if (list.black.indexOf(userId) != -1 || !isBusinessHours) {
+      response.send({
+        error: true,
+        message: 'you\'re not allowed, bounce',
+        success: false
+      });
+
+      return;
+    }
+
+    child_process.exec('python gpio.py', {
+      cwd: __dirname
+    });
+
+    response.send({
+      error: false,
+      message: 'welcome',
       success: true
     });
 

@@ -9,7 +9,7 @@ class GatekeeprClient(object):
 
 
     def open(self, mac_address):
-        logging.info("Sending /open to " + self._url)
+        logging.info("Sending /open with address {} to {}".format(mac_address, self._url))
         response = requests.post(
             self._url + "/open", 
             params={"mac_address": mac_address},

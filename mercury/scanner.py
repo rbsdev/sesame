@@ -4,10 +4,13 @@ import logging
 class DeviceScanner(object):
 
     def start(self, callback):
-        # scan events
-        # for each event get mac address
-        logging.info("Scanning devices...")
-        mac_address = 'abc'
-        callback(mac_address)
+        while True:
+            logging.info("\n\nScanning devices...")
+            nearby_devices = bluetooth.discover_devices(lookup_names = True)
+            logging.info("found %d devices" % len(nearby_devices))
+
+            for addr, name in nearby_devices:
+                logging.info("Found device: %s - %s" % (addr, name))
+                callback(addr)
         
 

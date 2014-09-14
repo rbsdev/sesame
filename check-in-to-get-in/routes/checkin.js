@@ -49,6 +49,10 @@ router.post('/', function(req, res) {
 
 		});
 
+		req.on('error', function(e) {
+		  console.log('problem with request: ' + e.message);
+		});
+
 		req.write(data);
 		req.end();
 

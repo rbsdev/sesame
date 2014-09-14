@@ -1,11 +1,9 @@
 var app,
     bodyParser = require('body-parser'),
-    dateformat = require('dateformat'),
     express = require('express'),
-    gpio = require('pi-gpio'),
+    log = require('./log'),
     minimist = require('minimist'),
-    options,
-    pin = 3;
+    options;
 
 app = express();
 
@@ -21,7 +19,7 @@ options = minimist(process.argv.slice(2), {
 app.use(bodyParser.json());
 
 app.all('*', function(request, response, next) {
-  console.log('  %s %s %s', dateformat(new Date(), 'yyyy-mm-dd hh:MM:ss'), request.method, request.path);
+  log('%s %s', request.method, request.path);
   next();
 });
 
@@ -35,16 +33,6 @@ app.post('/open', function(request, response) {
   // {"mac_address": "01:23:45:67:89:ab"}
   // OR
   // {"user_id": "gibatronic"}
-
-  gpio.open(pin, "output", function(err) {
-    gpio.write(pin, 1, function() {
-      setTimeout(function() {
-        gpio.write(pin, 0, function() {
-          gpio.close(pin);
-        });
-      }, 1000);
-    });
-  });
 
   response.status(200)
           .type('json')

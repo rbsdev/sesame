@@ -2,9 +2,11 @@ var config = {
 	"client_id": "",
 	"client_secret": "",
 	"push_secret": "",
-	"redirect_uri": "/callback",
-	"response_type": "code",
-	"grant_type": "authorization_code",
+	"callback": {
+		"response_type": "code",
+		"redirect_uri": "https://179.184.113.212/callback",
+		"grant_type": "authorization_code"
+	},
 	"ssl": {
 		"key": "certificates/<name>.key",
 		"cert": "certificates/<name>.crt"

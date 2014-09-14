@@ -34,3 +34,5 @@ var server = https.createServer({
 	cert : fs.readFileSync(config.ssl.cert)	
 
 }, app).listen(443);
+
+console.log('Running!');

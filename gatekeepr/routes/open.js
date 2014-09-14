@@ -10,9 +10,9 @@ var child_process = require('child_process'),
     success,
     triggerGpio;
 
-fs.exists('../list.json', function(exists) {
+fs.exists(path.resolve(__dirname, '..', 'list.json'), function(exists) {
   if (exists) {
-    list = require('../list');
+    list = require(path.resolve(__dirname, '..', 'list'));
   } else {
     list = {
       black: [ ],
@@ -96,6 +96,12 @@ router.post('/open', function(request, response) {
 
       return;
     }
+
+    list.white.forEach(function(item, index, items) {
+      if (item.mac_address == macAddress) {
+        speak(item.name);
+      }
+    });
 
     triggerGpio();
     success(response, 'welcome');

@@ -16,5 +16,7 @@ class GatekeeprClient(object):
         )
         if response.status_code != 200:
             logging.error("Gatekeepr returned code {0}".format(response.status_code))
+        else:
+            logging.info("Gatekeepr returned " + response.text)
 
 

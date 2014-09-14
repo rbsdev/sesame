@@ -1,5 +1,6 @@
 var app,
     bodyParser = require('body-parser'),
+    child_process = require('child_process'),
     express = require('express'),
     log = require('./log'),
     minimist = require('minimist'),
@@ -31,17 +32,55 @@ app.get('/', function(request, response) {
 });
 
 app.post('/open', function(request, response) {
-  // {"mac_address": "01:23:45:67:89:ab"}
-  // OR
-  // {"user_id": "gibatronic"}
+  var hasMacAddress = false,
+      hasUserId = false,
+      macAddress = request.body.mac_address,
+      userId = request.body.user_id;
 
-  response.status(200)
-          .type('json')
-          .send({
-            error: false,
-            message: 'Sesame Gatekeepr',
-            success: true
-          });
+  response.status(200).type('json')
+
+  hasMacAddress = macAddress ? true : false;
+  hasUserId = userId ? true : false;
+
+  if (hasMacAddress && hasUserId) {
+    response.send({
+      error: true,
+      message: 'ambiguous request, either pass mac_address or user_id, never both',
+      success: false
+    });
+
+    return;
+  }
+
+  if (!hasMacAddress && !hasUserId) {
+    response.send({
+      error: true,
+      message: 'identify yourself, pass either mac_address or user_id',
+      success: false
+    });
+
+    return;
+  }
+
+  if (true) {
+    child_process.spawn('sudo python trigger.py', {
+      cwd: __dirname
+    });
+
+    response.send({
+      error: false,
+      message: '',
+      success: true
+    });
+
+    return;
+  }
+
+  response.send({
+    error: true,
+    message: 'unknow error, sorry',
+    success: false
+  });
 });
 
 app.listen(options.port);

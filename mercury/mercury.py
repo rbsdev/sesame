@@ -6,7 +6,7 @@ import logging
 
 
 def main():
-    gatekeepr_client = GatekeeprClient()
+    gatekeepr_client = GatekeeprClient('http://10.1.24.100')
     device_scanner = DeviceScanner()  
     device_scanner.start(gatekeepr_client.open)
 

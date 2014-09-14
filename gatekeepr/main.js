@@ -3,7 +3,8 @@ var app,
     express = require('express'),
     log = require('./log'),
     minimist = require('minimist'),
-    options;
+    options,
+    os = require('os');
 
 app = express();
 
@@ -45,4 +46,9 @@ app.post('/open', function(request, response) {
 
 app.listen(options.port);
 
-console.log('Sesame Gatekeepr is alive on port %s', options.port);
+process.stdout.write('Sesame Gatekeepr is alive on port ' + options.port + os.EOL);
+
+process.on('SIGINT', function() {
+  process.stdout.write('\033[999D\033[KSesame Gatekeepr is going down' + os.EOL);
+  process.exit(0);
+});

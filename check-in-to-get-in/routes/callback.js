@@ -5,18 +5,13 @@ var express = require('express'),
 
 router.get('/', function(req, res) {
 
-	console.log('Callback', req);
+	console.log('Callback');
 
-	var code   = req.param('code'),
-		config = {
-			redirect_uri: config.callback.redirect_uri,
-			grant_type: config.callback.grant_type
-	    };
-
+	var code = req.param('code');
 	console.log('Code', code);
-	console.log('Config', config);
+	console.log('Config', config.callback);
 
-	foursquare.getOAuthAccessToken(code, config, function(err, access_token, refresh_token, results) {
+	foursquare.getOAuthAccessToken(code, config.callback, function(err, access_token, refresh_token, results) {
 
 		console.log('Error',err);
 		console.log('Token',access_token);

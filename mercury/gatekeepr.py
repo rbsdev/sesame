@@ -1,5 +1,6 @@
 import requests
 import logging
+import json
 
 
 class GatekeeprClient(object):
@@ -13,7 +14,8 @@ class GatekeeprClient(object):
         try:
             response = requests.post(
                 self._url + "/open", 
-                params={"mac_address": mac_address},
+                data=json.dumps({"mac_address": mac_address}),
+		headers={"Content-Type":"application/json"}
             )
     
             if response.status_code != 200:

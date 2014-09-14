@@ -1,14 +1,13 @@
 var express = require('express'),
-		router 	= express.Router(),
-		config 	= require('../config');
+		router = express.Router(),
+		config = require('../config'),
+		exec = require("child_process").exec;
 
 router.post('/', function(req, res) {
 
 	console.log('Checkin');
 
-	var checkin = request.param('checkin');
-
-	console.log('Checkin', checkin);
+	var checkin = req.param('checkin');
 
 	if (checkin) {
 

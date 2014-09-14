@@ -1,20 +1,12 @@
 var express = require('express'),
-		router  = express.Router(),
-		config  = require('../config'),
+		router = express.Router(),
+		config = require('../config'),
 		foursquare = require('../foursquare');
 
 router.get('/', function(req, res) {
 
-	console.log('Callback');
-
 	var code = req.param('code');
-	console.log('Code', code);
-	console.log('Config', config.callback);
-
-	foursquare.getOAuthAccessToken(code, config.callback, function(err, access_token, refresh_token, results) {
-
-		console.log('Error',err);
-		console.log('Token',access_token);
+	var callback = function(err, access_token, refresh_token, results) {
 		
 		if (err) {
 
@@ -22,19 +14,17 @@ router.get('/', function(req, res) {
 
 		} else {
 
-			console.log('Foursquare Session', req.session.foursquare);
-
 			req.session.foursquare = {
 				access_token : access_token
 			};
-
-			console.log('Foursquare Session', req.session.foursquare);
 
 		};
 
 		res.redirect('/');
 
-	});
+	};
+	
+	foursquare.getOAuthAccessToken(code, config.callback, callback);
 
 });
 

@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
 
 	var code   = req.param('code'),
 		config = {
-			redirect_uri: config.callback.redirect_uri
+			redirect_uri: config.callback.redirect_uri,
 			grant_type: config.callback.grant_type
 	    };
 

@@ -79,7 +79,8 @@ app.post('/open', function(request, response) {
   }
 
   if (hasMacAddress) {
-    if (list.black.indexOf(macAddress) != -1 || list.white.indexOf(macAddress) == -1) {
+    // if (list.black.indexOf(macAddress) != -1 || list.white.indexOf(macAddress) == -1) {
+    if (false) {
       response.send({
         error: true,
         message: 'you\'re not allowed, bounce',

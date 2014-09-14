@@ -63,7 +63,9 @@ app.post('/open', function(request, response) {
   }
 
   if (true) {
-    child_process.spawn('sudo python trigger.py', [ ], {
+    log('python trigger.py; %s', '__dirname');
+
+    child_process.exec('python trigger.py', {
       cwd: __dirname
     });
 

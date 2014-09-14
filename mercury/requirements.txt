@@ -1,3 +1,4 @@
 PyBluez==0.20
 argparse==1.2.1
+requests==2.4.1
 wsgiref==0.1.2

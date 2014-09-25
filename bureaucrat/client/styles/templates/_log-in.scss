@@ -1,0 +1,57 @@
+.log-in {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  margin: 0px;
+}
+
+.log-in-field, .log-in-icon {
+  font-size: 21px;
+}
+
+.log-in-field {
+  position: absolute;
+  left: 26px;
+  top: 0px;
+  bottom: 0px;
+  @include calc(width, '100% - 26px - 26px');
+}
+
+.log-in-fieldset {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include transform(translate(-50%, -50%));
+  @include transform-origin(0px 0px);
+  width: 320px;
+  height: 48px;
+
+  &.error {
+    @include animation(shake 0.8s);
+  }
+}
+
+.log-in-float {
+  float: left;
+}
+
+.log-in-icon {
+  display: block;
+}
+
+.log-in-label {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  height: auto;
+}
+
+.log-in-icon {
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  @include transform(translateY(-50%));
+}

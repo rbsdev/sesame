@@ -1,10 +1,15 @@
-this.DashboardView = function() {
-  this.template = Template['dashboard'];
-  this.template.rendered = this.rendered.bind(this);
-};
+var bureaucrat = this.bureaucrat || (this.bureaucrat = { }),
+    views = bureaucrat.views || (bureaucrat.views = { }),
+    Dashboard,
+    rendered;
 
-DashboardView.prototype.template = null;
-
-DashboardView.prototype.rendered = function() {
+rendered = function() {
   
 };
+
+Dashboard = function() {
+  this.template = Template['dashboard'];
+  this.template.rendered = rendered.bind(this);
+};
+
+views.Dashboard = Dashboard;

@@ -1,25 +1,27 @@
 // cool
 
-$aqua: rgb(127, 219, 255);
-$blue: rgb(0, 116, 217);
-$navy: rgb(0, 31, 63);
-$teal: rgb(57, 204, 204);
-$green: rgb(46, 204, 64);
-$olive: rgb(61, 153, 112);
-$lime: rgb(1, 255, 112);
+$color-aqua: rgb(127, 219, 255);
+$color-blue: rgb(0, 116, 217);
+$color-green: rgb(46, 204, 64);
+$color-lime: rgb(1, 255, 112);
+$color-navy: rgb(0, 31, 63);
+$color-olive: rgb(61, 153, 112);
+$color-teal: rgb(57, 204, 204);
 
 // warm
 
-$yellow: rgb(255, 220, 0);
-$orange: rgb(255, 133, 27);
-$red: rgb(255, 65, 54);
-$fuchsia: rgb(240, 18, 190);
-$purple: rgb(177, 13, 201);
-$maroon: rgb(133, 20, 75);
+$color-fuchsia: rgb(240, 18, 190);
+$color-maroon: rgb(133, 20, 75);
+$color-orange: rgb(255, 133, 27);
+$color-purple: rgb(177, 13, 201);
+$color-red: rgb(255, 65, 54);
+$color-yellow: rgb(255, 220, 0);
 
 // gray
 
-$white: rgb(255, 255, 255);
-$silver: rgb(221, 221, 221);
-$gray: rgb(170, 170, 170);
-$black: rgb(17, 17, 17);
+$color-black: rgb(17, 17, 17);
+$color-dim: rgb(105, 105, 105);
+$color-gray: rgb(170, 170, 170);
+$color-silver: rgb(221, 221, 221);
+$color-slate: rgb(112, 128, 144);
+$color-white: rgb(246, 246, 246);

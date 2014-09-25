@@ -1,4 +1,7 @@
 <template name="layout">
-  {{> header}}
+  {{#unless headerless}}
+    {{> header}}
+  {{/unless}}
+
   {{> yield}}
 </template>

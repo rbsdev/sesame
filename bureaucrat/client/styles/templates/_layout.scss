@@ -1,17 +1,33 @@
+@include keyframes(color-in) {
+  100% {
+    background-color: $color-silver;
+  }
+}
+
 * {
   position: relative;
   @include box-sizing(border-box);
+  font-family: $sans-serif;
+  font-size: 14px;
+  color: $color-black;
+  cursor: default;
 }
 
-body, h1, p {
+a {
+  cursor: pointer;
+}
+
+body, fieldset, form, h1, p {
   margin: 0px;
+  padding: 0px;
+}
+
+body, html {
+  height: 100%;
 }
 
 body {
-  background-color: $white;
-  color: $black;
-  font-family: $sans-serif;
-  font-size: 14px;
+  @include animation(color-in 0.4s ease 0s 1 normal forwards);
 }
 
 h1 {
@@ -20,8 +36,14 @@ h1 {
   font-size: 2em;
 }
 
-.container {
-  margin: 2em auto 2em auto;
-  width: 100%;
-  max-width: 480px;
+.hide {
+  @include animation(fade 0.4s ease 0s 1 reverse backwards);
+}
+
+.transparent {
+  opacity: 0;
+}
+
+.show {
+  @include animation(fade 0.4s ease 0s 1 normal forwards);
 }

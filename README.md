@@ -1,6 +1,6 @@
 # Sesame
 
-Grupo RBS hackathon's 2rd edition winner project! :grimacing:
+Grupo RBS hackathon's 2nd edition winner project! :grimacing:
 
 The project was conceived to authorize the access to the office with better ways than the current buggy fingerprint scanner. It runs inside of a [Raspberry PI](http://www.raspberrypi.org/) and has a collection of apps under its hood:
 

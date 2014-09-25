@@ -18,5 +18,5 @@ Handles bluetooth integration
 
 &#160;
 *Made with love by:*
-&#160;
+<br>
 [![Diego Pereira](https://avatars0.githubusercontent.com/u/309799?v=2&amp;s=48)](https://github.com/dpereira) [![Evandro Eisinger](https://avatars0.githubusercontent.com/u/1188421?v=2&amp;s=48)](https://github.com/evandroeisinger) [![Gibran Malheiros](https://avatars0.githubusercontent.com/u/819643?v=2&amp;s=48)](https://github.com/gibatronic) [![Gustavo Führ](https://avatars0.githubusercontent.com/u/6292987?v=2&amp;s=48)](https://github.com/gustavofuhr) [![Michele Silva](https://avatars0.githubusercontent.com/u/89602?v=2&amp;s=48)](https://github.com/mchelem)

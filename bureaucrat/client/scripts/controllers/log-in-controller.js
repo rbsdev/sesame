@@ -1,28 +1,40 @@
 var bureaucrat = this.bureaucrat || (this.bureaucrat = { }),
-    controllers = bureaucrat.controllers || (bureaucrat.controllers = { }),
-    afterAction,
-    data,
-    LogIn;
+    controllers = bureaucrat.controllers || (bureaucrat.controllers = { });
 
-afterAction = function() {
-  if (!this.view) {
-    this.view = new bureaucrat.views.LogIn;
-  }
-};
+controllers.LogIn = (function() {
+  var afterAction,
+      data,
+      headerless = true,
+      humanName = 'Log-in',
+      LogIn,
+      menuless = true,
+      path = '/log-in',
+      template = 'log-in';
 
-data = function() {
-  return {
-    headerless: true
+  afterAction = function() {
+    if (!this.view) {
+      this.view = new bureaucrat.views.LogIn();
+    }
   };
-};
 
-LogIn = RouteController.extend({
-  data: data,
-  onAfterAction: afterAction,
-  view: null
-});
+  data = function() {
+    return {
+      headerless: headerless,
+      menuless: menuless
+    };
+  };
 
-LogIn.path = '/log-in';
-LogIn.template = 'log-in';
+  LogIn = RouteController.extend({
+    data: data,
+    onAfterAction: afterAction,
+    view: null
+  });
 
-controllers.LogIn = LogIn;
+  LogIn.headerless = headerless;
+  LogIn.humanName = humanName;
+  LogIn.menuless = menuless;
+  LogIn.path = path;
+  LogIn.template = template;
+
+  return LogIn;
+})();

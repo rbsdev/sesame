@@ -116,8 +116,6 @@ views.LogIn = (function() {
   };
 
   LogIn = function() {
-    var events = { };
-
     events['keydown .log-in-field'] = watch;
 
     template = Template['log-in'];

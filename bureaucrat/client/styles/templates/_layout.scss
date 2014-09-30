@@ -1,3 +1,7 @@
+$layout-aside: 256px;
+$layout-margin: 20px;
+$layout-space: 3px;
+
 @include keyframes(color-in) {
   100% {
     background-color: $color-silver;
@@ -38,6 +42,20 @@ h1 {
 
 .hide {
   @include animation(fade 0.4s ease 0s 1 reverse backwards);
+}
+
+.main {
+  position: absolute;
+  top: $layout-margin;
+  right: $layout-margin;
+  bottom: $layout-margin;
+  left: $layout-aside + $layout-margin + $layout-space;
+  background-color: $color-dim;
+  border-radius: $layout-space;
+
+  &.log-in {
+    background-color: rgba($color-dim, 0);
+  }
 }
 
 .transparent {

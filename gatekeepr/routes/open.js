@@ -31,23 +31,24 @@ error = function(response, message) {
 
 isBusinessHours = function() {
   var day,
+      hour,
       isBusinessDay,
       isBusinessHour,
       now = new Date();
 
   day = now.toDateString().substr(0, 3).toLowerCase();
+  hour = now.getHours();
 
   isBusinessDay = ['mon', 'tue', 'wed', 'thu', 'fri'].indexOf(day) != -1;
-  isBusinessHour = now.getHours() > 9 && now.getHours() < 19;
+  isBusinessHour = hour > 9 && hour < 18;
 
-  // return isBusinessDay && isBusinessHour;
-  return true;
+  return isBusinessDay && isBusinessHour;
 };
 
 speak = function(message) {
-  child_process.exec('sh say.sh "' + message + '"', {
-    cwd: path.resolve(__dirname, '..')
-  });
+  // child_process.exec('sh say.sh "' + message + '"', {
+  //   cwd: path.resolve(__dirname, '..')
+  // });
 };
 
 success = function(response, message) {
@@ -65,17 +66,26 @@ triggerGpio = function() {
 };
 
 router.post('/open', function(request, response) {
-  var hasMacAddress = false,
-      hasUserId = false,
+  var hasMacAddress,
+      hasUserId,
+      hasUserName,
+      isJson,
       macAddress = request.body.mac_address,
       userName = request.body.user_name;
       userId = request.body.user_id;
 
   response.status(200).type('json')
 
-  hasMacAddress = macAddress ? true : false;
-  hasUserName = userName ? true : false;
-  hasUserId = userId ? true : false;
+  hasMacAddress = !!macAddress;
+  hasUserId = !!userId;
+  hasUserName = !!userName;
+  isJson = request.get('Content-Type') == 'application/json';
+
+  if (!isJson) {
+    error(response, 'wrong content-type, application/json is required');
+
+    return;
+  }
 
   if (hasMacAddress && hasUserId) {
     error(response, 'ambiguous request, either pass mac_address or user_id, never both');
@@ -90,8 +100,7 @@ router.post('/open', function(request, response) {
   }
 
   if (hasMacAddress) {
-    // if (list.black.indexOf(macAddress) != -1 || list.white.indexOf(macAddress) == -1) {
-    if (false) {
+    if (list.black.indexOf(macAddress) != -1 || list.white.indexOf(macAddress) == -1) {
       error(response, 'you\'re not allowed, bounce');
 
       return;

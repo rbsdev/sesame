@@ -4,7 +4,9 @@
 @import "mixins/fonts";
 @import "mixins/forms";
 @import "mixins/keyframes";
+@import "mixins/layout";
 
-@import "templates/layout";
+@import "templates/dashboard";
 @import "templates/header";
 @import "templates/log-in";
+@import "templates/menu";

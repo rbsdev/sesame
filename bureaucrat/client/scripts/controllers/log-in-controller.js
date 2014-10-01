@@ -12,8 +12,10 @@ controllers.LogIn = (function() {
       template = 'log-in';
 
   afterAction = function() {
-    if (!this.view) {
-      this.view = new bureaucrat.views.LogIn();
+    var that = this;
+
+    if (!that.view) {
+      that.view = new bureaucrat.views.LogIn(LogIn);
     }
   };
 

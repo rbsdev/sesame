@@ -1,10 +1,10 @@
-$layout-aside: 256px;
+$layout-aside: 48px;
 $layout-margin: 20px;
-$layout-space: 3px;
+$layout-space: 1px;
 
 @include keyframes(color-in) {
   100% {
-    background-color: $color-silver;
+    background-color: $color-gray;
   }
 }
 
@@ -14,7 +14,6 @@ $layout-space: 3px;
   font-family: $sans-serif;
   font-size: 14px;
   color: $color-black;
-  cursor: default;
 }
 
 a {
@@ -32,6 +31,7 @@ body, html {
 
 body {
   @include animation(color-in 0.4s ease 0s 1 normal forwards);
+  cursor: default;
 }
 
 h1 {
@@ -44,14 +44,20 @@ h1 {
   @include animation(fade 0.4s ease 0s 1 reverse backwards);
 }
 
+.icon text {
+  font-family: octicons;
+  text-anchor: middle;
+  text-rendering: geometricPrecision;
+}
+
 .main {
   position: absolute;
-  top: $layout-margin;
-  right: $layout-margin;
+  top: $layout-aside + $layout-margin + $layout-space;
+  right: $layout-aside + $layout-margin + $layout-space;
   bottom: $layout-margin;
-  left: $layout-aside + $layout-margin + $layout-space;
-  background-color: $color-dim;
-  border-radius: $layout-space;
+  left: $layout-margin;
+  background-color: $color-white;
+  box-shadow: 0px 1px 1px 0px $color-dim;
 
   &.log-in {
     background-color: rgba($color-dim, 0);

@@ -2,19 +2,23 @@ var bureaucrat = this.bureaucrat || (this.bureaucrat = { }),
     controllers = bureaucrat.controllers || (bureaucrat.controllers = { }),
     views = bureaucrat.views || (bureaucrat.views = { });
 
-views.Header = (function() {
-  var data = { },
+views.Menu = (function() {
+  var anchors,
+      data = { },
       $dom = { },
       dom = { },
       events = { },
-      Header,
+      Menu,
       isActive,
       jquerify,
       logOut,
-      map,
       rendered,
       template,
       update;
+
+  anchors = function() {
+    return _.values(data.anchors.get());
+  };
 
   isActive = function(controller) {
     var current = Router.current();
@@ -38,40 +42,37 @@ views.Header = (function() {
     Meteor.logout();
   };
 
-  menu = function() {
-    return _.values(data.menu.get());
-  };
-
   rendered = function() {
     _.each(dom, jquerify);
   };
 
   update = function() {
-    var menu = data.menu.get();
+    var anchors = data.anchors.get();
 
     _.each(controllers, function(controller, name) {
       if (!controller.menuless) {
-        menu[name] = {
+        anchors[controller.template] = {
           active: isActive(controller),
-          name: controller.humanName,
+          humanName: controller.humanName,
+          icon: controller.icon,
           template: controller.template
         };
       }
     });
   };
 
-  Header = function() {
-    events['click .header-log-out'] = logOut;
+  Menu = function() {
+    events['click .menu-log-out'] = logOut;
 
-    template = Template['header'];
-    template.menu = menu;
+    template = Template['menu'];
+    template.anchors = anchors;
     template.rendered = rendered;
     template.events(events);
 
-    data.menu = new ReactiveVar({ });
+    data.anchors = new ReactiveVar({ });
 
     Router.onAfterAction(update);
   };
 
-  return Header;
+  return Menu;
 })();

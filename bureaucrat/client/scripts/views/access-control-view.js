@@ -1,13 +1,13 @@
 var bureaucrat = this.bureaucrat || (this.bureaucrat = { }),
     views = bureaucrat.views || (bureaucrat.views = { }),
-    Dashboard,
+    AccessControl,
     rendered;
 
 rendered = function() {
   
 };
 
-Dashboard = function(controller) {
+AccessControl = function(controller) {
   var that = this;
 
   that.controller = controller;
@@ -16,4 +16,4 @@ Dashboard = function(controller) {
   that.template.rendered = rendered.bind(that);
 };
 
-views.Dashboard = Dashboard;
+views.AccessControl = AccessControl;

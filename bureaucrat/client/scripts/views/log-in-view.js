@@ -115,10 +115,10 @@ views.LogIn = (function() {
     Meteor.loginWithPassword('root', password, loggedIn);
   };
 
-  LogIn = function() {
+  LogIn = function(controller) {
     events['keydown .log-in-field'] = watch;
+    template = Template[controller.template];
 
-    template = Template['log-in'];
     template.rendered = rendered;
     template.events(events);
   };

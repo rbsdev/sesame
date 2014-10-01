@@ -4,4 +4,8 @@
   {{/unless}}
 
   {{> yield}}
+
+  {{#unless menuless}}
+    {{> menu}}
+  {{/unless}}
 </template>

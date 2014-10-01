@@ -1,0 +1,70 @@
+.menu {
+  position: absolute;
+  top: $layout-aside + $layout-margin + $layout-space;
+  right: $layout-margin;
+  bottom: $layout-margin;
+  background-color: $color-white;
+  box-shadow: 0px 1px 1px 0px $color-dim;
+  width: $layout-aside;
+  height: auto;
+}
+
+.menu-anchor {
+  border-bottom: 1px solid $color-dim;
+  display: block;
+  text-decoration: none;
+  width: $layout-aside;
+  height: $layout-aside;
+}
+
+.menu-icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  text {
+    font-size: 32px;
+  }
+}
+
+.menu-icon-background {
+  fill: rgb(105, 105, 105);
+}
+
+.menu-icon-shadow {
+  fill: rgb(155, 155, 155);
+}
+
+.menu-log-out {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  background-color: transparent;
+  border: 0px none transparent;
+  border-radius: 0px;
+  border-top: 1px solid $color-dim;
+  color: $color-gray;
+  font-family: octicons;
+  font-size: 32px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1;
+  width: $layout-aside + 1;
+  height: $layout-aside;
+
+  .menu-icon {
+    top: 26px;
+    left: 30px;
+  }
+}
+
+.menu-nav {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  width: auto;
+  height: auto;
+}

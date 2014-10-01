@@ -1,22 +1,22 @@
 var bureaucrat = this.bureaucrat || (this.bureaucrat = { }),
     controllers = bureaucrat.controllers || (bureaucrat.controllers = { });
 
-controllers.Dashboard = (function() {
+controllers.Logs = (function() {
   var afterAction,
-      Dashboard,
+      Logs,
       data,
       headerless = false,
-      humanName = 'Dashboard',
-      icon = '&#61565;',
+      humanName = 'Logs',
+      icon = '&#61441;',
       menuless = false,
-      path = '/',
-      template = 'dashboard';
+      path = '/logs',
+      template = 'logs';
 
   afterAction = function() {
     var that = this;
 
     if (!that.view) {
-      that.view = new bureaucrat.views.Dashboard(Dashboard);
+      that.view = new bureaucrat.views.Logs(Logs);
     }
   };
 
@@ -27,18 +27,18 @@ controllers.Dashboard = (function() {
     };
   };
 
-  Dashboard = RouteController.extend({
+  Logs = RouteController.extend({
     data: data,
     onAfterAction: afterAction,
     view: null
   });
 
-  Dashboard.headerless = headerless;
-  Dashboard.humanName = humanName;
-  Dashboard.icon = icon;
-  Dashboard.menuless = menuless;
-  Dashboard.path = path;
-  Dashboard.template = template;
+  Logs.headerless = headerless;
+  Logs.humanName = humanName;
+  Logs.icon = icon;
+  Logs.menuless = menuless;
+  Logs.path = path;
+  Logs.template = template;
 
-  return Dashboard;
+  return Logs;
 })();

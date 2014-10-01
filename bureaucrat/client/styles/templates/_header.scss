@@ -1,90 +1,40 @@
 .header {
   position: absolute;
   top: $layout-margin;
-  bottom: $layout-margin;
+  right: $layout-margin;
   left: $layout-margin;
-  background-color: $color-white;
-  border-radius: $layout-space + 2;
-  width: $layout-aside;
-  height: auto;
+  width: auto;
+  height: $layout-aside;
+
+  &:after {
+    position: absolute;
+    right: 0px;
+    bottom: -1px;
+    left: 0px;
+    background-color: $color-gray;
+    content: '';
+    width: auto;
+    height: 1px;
+  }
 }
 
 .header-title {
   position: absolute;
-  top: 0px;
-  left: 50%;
-  text-align: center;
-  @include transform(translate(-50%, -12px + $layout-margin));
-  @include transform-origin(0px 0px);
-}
+  bottom: -8px;
+  left: 34px;
+  color: $color-white;
 
-.header-nav {
-  position: absolute;
-  top: $layout-margin + 32;
-  right: 0px;
-  bottom: 48px + $layout-space;
-  left: 0px;
-  width: auto;
-  height: auto;
-}
-
-.header-anchor {
-  border-radius: $layout-space;
-  display: block;
-  font-size: 1.2em;
-  line-height: 48px;
-  margin: $layout-space;
-  padding: 0px $layout-margin 0px $layout-margin;
-  text-align: center;
-  text-decoration: none;
-  @include calc(width, '100% - ' + ($layout-space * 2));
-  height: 48px;
-
-  &.active {
-    background-color: $color-dim;
-    background-size: 50% 50%;
-    background-repeat: no-repeat;
-    border-radius: $layout-space 0px 0px $layout-space;
-    color: $color-white;
-    margin-right: 0px;
-    @include calc(width, '100%');
-
-    &:after {
-      position: absolute;
-      right: 0px;
-      bottom: -$layout-space;
-      @include radial-gradient(circle at 0px $layout-space, rgba($color-dim, 0) $layout-space, $color-dim $layout-space);
-      content: '';
-      display: block;
-      width: $layout-space;
-      height: $layout-space;
-    }
-
-    &:before {
-      position: absolute;
-      top: -$layout-space;
-      right: 0px;
-      @include radial-gradient(circle at 0px 0px, rgba($color-dim, 0) $layout-space, $color-dim $layout-space);
-      content: '';
-      display: block;
-      width: $layout-space;
-      height: $layout-space;
-    }
-  }
-}
-
-.header-log-out {
-  position: absolute;
-  right: $layout-space;
-  bottom: $layout-space;
-  left: $layout-space;
-  background-color: rgba($color-silver, 0);
-  border-width: 0px;
-  @include transition(background-color 0.05s);
-  @include calc(width, '100% - ' + ($layout-space * 2));
-  height: 48px;
-
-  &:hover {
-    background-color: rgba($color-silver, 1);
+  &:before {
+    position: absolute;
+    top: -4px;
+    left: -36px;
+    content: '\f08c';
+    font-family: octicons;
+    font-size: 32px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1;
+    width: 28px;
+    height: 32px;
   }
 }

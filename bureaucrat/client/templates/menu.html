@@ -1,0 +1,36 @@
+<template name="menu">
+  <aside class="menu">
+    <nav class="menu-nav">
+      {{#each anchors}}
+        <a href="{{pathFor template}}" title="{{humanName}}" class="menu-anchor{{#if active}} active{{/if}}">
+          <svg baseProfile="full" version="1.1" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" class="icon menu-icon">
+            <defs>
+              <mask id="svgmask{{template}}">
+                <text x="16" y="26" fill="rgb(255, 255, 255)">{{{icon}}}</text>
+              </mask>
+            </defs>
+
+            <g mask="url(#svgmask{{template}})">
+              <rect x="0" y="0" width="32" height="32" class="menu-icon-background" />
+              <text x="16" y="27" class="menu-icon-shadow">{{{icon}}}</text>
+            </g>
+          </svg>
+        </a>
+      {{/each}}
+      <button title="Log-out" class="menu-log-out">
+        <svg baseProfile="full" version="1.1" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" class="icon menu-icon">
+          <defs>
+            <mask id="svgmasklogout">
+              <text x="16" y="26" fill="rgb(255, 255, 255)">&#61490;</text>
+            </mask>
+          </defs>
+
+          <g mask="url(#svgmasklogout)">
+            <rect x="0" y="0" width="32" height="32" class="menu-icon-background" />
+            <text x="16" y="27" class="menu-icon-shadow">&#61490;</text>
+          </g>
+        </svg>
+      </button>
+    </nav>
+  </aside>
+</template>

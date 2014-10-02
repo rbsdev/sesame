@@ -13,6 +13,7 @@ views.Menu = (function() {
       jquerify,
       logOut,
       rendered,
+      sortedControllers,
       template,
       update;
 
@@ -49,7 +50,7 @@ views.Menu = (function() {
   update = function() {
     var anchors = data.anchors.get();
 
-    _.each(controllers, function(controller, name) {
+    _.each(sortedControllers, function(controller, name) {
       if (!controller.menuless) {
         anchors[controller.template] = {
           active: isActive(controller),
@@ -63,6 +64,10 @@ views.Menu = (function() {
 
   Menu = function() {
     events['click .menu-log-out'] = logOut;
+
+    sortedControllers = _.sortBy(controllers, function(controller) {
+      return controller.menuIndex;
+    });
 
     template = Template['menu'];
     template.anchors = anchors;

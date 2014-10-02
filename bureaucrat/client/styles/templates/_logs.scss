@@ -1,0 +1,15 @@
+.logs-output {
+  position: absolute;
+  top: $layout-margin;
+  right: $layout-margin;
+  bottom: $layout-margin;
+  left: $layout-margin;
+  font-family: $monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  padding: $layout-space;
+  width: auto;
+  height: auto;
+}

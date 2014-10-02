@@ -8,7 +8,8 @@ var child_process = require('child_process'),
     router = express.Router(),
     speak,
     success,
-    triggerGpio;
+    triggerGpio,
+    _ = require('underscore');
 
 fs.exists(path.resolve(__dirname, '..', 'list.json'), function(exists) {
   if (exists) {
@@ -69,10 +70,13 @@ router.post('/open', function(request, response) {
   var hasMacAddress,
       hasUserId,
       hasUserName,
+      isInBlackList,
+      isInWhiteList,
       isJson,
       macAddress = request.body.mac_address,
-      userName = request.body.user_name;
-      userId = request.body.user_id;
+      userId = request.body.user_id,
+      userName = request.body.user_name,
+      whiteListItem;
 
   response.status(200).type('json')
 
@@ -100,17 +104,23 @@ router.post('/open', function(request, response) {
   }
 
   if (hasMacAddress) {
-    if (list.black.indexOf(macAddress) != -1 || list.white.indexOf(macAddress) == -1) {
+    isInBlackList = !!_.findWhere(list.black, {
+      mac_address: macAddress
+    });
+
+    isInWhiteList = !!(whiteListItem = _.findWhere(list.white, {
+      mac_address: macAddress
+    }));
+
+    if (isInBlackList || !isInWhiteList) {
       error(response, 'you\'re not allowed, bounce');
 
       return;
     }
 
-    list.white.forEach(function(item, index, items) {
-      if (item.mac_address == macAddress) {
-        speak(item.name);
-      }
-    });
+    if ('name' in whiteListItem) {
+      speak(whiteListItem.name);
+    }
 
     triggerGpio();
     success(response, 'welcome');

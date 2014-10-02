@@ -1,0 +1,36 @@
+.access-control-content {
+  position: absolute;
+  top: $layout-margin;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  width: auto;
+  height: auto;
+}
+
+.access-control-list {
+  float: left;
+  margin: $layout-margin ($layout-margin / 2) $layout-margin ($layout-margin / 2);
+  @include calc(width, '50% - ' + $layout-margin);
+  @include calc(height, '100% - ' + ($layout-margin * 2));
+
+  &:first-child, &:last-child {
+    @include calc(width, '50% - ' + ($layout-margin * 1.5));
+  }
+
+  &:first-child {
+    margin-left: $layout-margin;
+  }
+
+  &:last-child {
+    margin-right: $layout-margin;
+  }
+}
+
+.access-control-title {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}

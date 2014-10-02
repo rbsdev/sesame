@@ -20,7 +20,7 @@ a {
   cursor: pointer;
 }
 
-body, fieldset, form, h1, p, pre {
+body, fieldset, form, h1, h2, h3, p, pre, td {
   margin: 0px;
   padding: 0px;
 }
@@ -34,10 +34,26 @@ body {
   cursor: default;
 }
 
+h1, h2, h3 {
+  font-weight: normal;
+}
+
 h1 {
   font-family: $serif;
-  font-weight: normal;
   font-size: 2em;
+}
+
+h2 {
+  font-size: 1.6em;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
 }
 
 .hide {

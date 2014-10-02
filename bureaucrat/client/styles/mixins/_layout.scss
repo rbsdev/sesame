@@ -11,9 +11,10 @@ $layout-space: 1px;
 * {
   position: relative;
   @include box-sizing(border-box);
+  color: $color-black;
   font-family: $sans-serif;
   font-size: 14px;
-  color: $color-black;
+  line-height: 1;
 }
 
 a {
@@ -38,13 +39,16 @@ h1, h2, h3 {
   font-weight: normal;
 }
 
-h1 {
+h1, h2 {
   font-family: $serif;
+}
+
+h1 {
   font-size: 2em;
 }
 
 h2 {
-  font-size: 1.6em;
+  font-size: 2em;
 }
 
 h3 {
@@ -77,6 +81,26 @@ table {
 
   &.log-in {
     background-color: rgba($color-dim, 0);
+  }
+}
+
+.main-title {
+  position: absolute;
+  top: -24px;
+  left: 180px;
+  color: $color-white;
+  overflow: hidden;
+  height: 24px;
+
+  &:after {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: $color-gray;
+    content: '';
+    width: auto;
+    height: 1px;
   }
 }
 

@@ -20,13 +20,13 @@
 
 .header-title {
   position: absolute;
-  bottom: -8px;
+  bottom: -5px;
   left: 34px;
   color: $color-white;
 
   &:before {
     position: absolute;
-    top: -4px;
+    top: -5px;
     left: -36px;
     content: '\f08c';
     font-family: octicons;

@@ -37,24 +37,28 @@ views.LogIn = (function() {
   };
 
   hide = function(callback) {
-    options = [].slice.call(arguments, 1);
+    var options = [].slice.call(arguments, 1);
 
-    $dom.fieldset
-        .delay(200)
-        .queue(function() {
-          $(this).addClass('hide')
-                 .dequeue();
-        })
-        .delay(400)
-        .queue(function() {
-          $(this).removeClass('hide')
-                 .addClass('transparent')
-                 .dequeue();
+    // $dom.fieldset
+    //     .delay(200)
+    //     .queue(function() {
+    //       $(this).addClass('hide')
+    //              .dequeue();
+    //     })
+    //     .delay(400)
+    //     .queue(function() {
+    //       $(this).removeClass('hide')
+    //              .addClass('transparent')
+    //              .dequeue();
 
-          if (callback instanceof Function) {
-            callback.apply(window, options);
-          }
-        });
+    //       if (callback instanceof Function) {
+    //         callback.apply(window, options);
+    //       }
+    //     });
+
+    if (callback instanceof Function) {
+      callback.apply(window, options);
+    }
   };
 
   jquerify = function(query, element, dom) {
@@ -77,25 +81,33 @@ views.LogIn = (function() {
   };
 
   show = function(callback) {
-    $dom.fieldset
-        .delay(200)
-        .queue(function() {
-          $(this).removeClass('transparent')
-                 .addClass('show')
-                 .dequeue();
-        })
-        .delay(400)
-        .queue(function() {
-          $(this).removeClass('show')
-                 .dequeue();
+    var options = [].slice.call(arguments, 1);
 
-          $dom.field.focus()
-                    .select();
+    // $dom.fieldset
+    //     .delay(200)
+    //     .queue(function() {
+    //       $(this).removeClass('transparent')
+    //              .addClass('show')
+    //              .dequeue();
+    //     })
+    //     .delay(400)
+    //     .queue(function() {
+    //       $(this).removeClass('show')
+    //              .dequeue();
 
-          if (callback instanceof Function) {
-            callback();
-          }
-        });
+    //       $dom.field.focus()
+    //                 .select();
+
+    //       if (callback instanceof Function) {
+    //         callback();
+    //       }
+    //     });
+
+    $dom.field.focus().select();
+
+    if (callback instanceof Function) {
+      callback.apply(window, options);
+    }
   };
 
   watch = function(event, template) {

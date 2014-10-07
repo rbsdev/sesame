@@ -60,6 +60,10 @@ table {
   width: 100%;
 }
 
+.float-left {
+  float: left;
+}
+
 .hide {
   @include animation(fade 0.4s ease 0s 1 reverse backwards);
 }

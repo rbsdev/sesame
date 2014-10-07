@@ -1,19 +1,53 @@
 var bureaucrat = this.bureaucrat || (this.bureaucrat = { }),
-    views = bureaucrat.views || (bureaucrat.views = { }),
-    AccessControl,
-    rendered;
+    collections = bureaucrat.collections || (bureaucrat.collections = { }),
+    views = bureaucrat.views || (bureaucrat.views = { });
 
-rendered = function() {
-  
-};
+views.AccessControl = (function() {
+  var AccessControl,
+      controller,
+      $dom = { },
+      dom = { },
+      events = { },
+      jquerify,
+      rendered,
+      template;
 
-AccessControl = function(controller) {
-  var that = this;
+  dom.field = '.access-control-add';
 
-  that.controller = controller;
-  that.template = Template[controller.template];
+  add = function(collections, event, template) {
+    var into = $(event.currentTarget).data('into'),
+        map;
 
-  that.template.rendered = rendered.bind(that);
-};
+    map = {
+      black: 'AccessControlBlackList',
+      white: 'AccessControlWhiteList'
+    };
 
-views.AccessControl = AccessControl;
+    if (!(into in map)) {
+      return;
+    }
+
+    collections[map[into]].insert({
+      entry: ''
+    });
+  };
+
+  jquerify = function(query, element, dom) {
+    $dom[element] = $(query);
+  };
+
+  rendered = function() {
+    _.each(dom, jquerify);
+  };
+
+  AccessControl = function(control) {
+    controller = control;
+    events['click .access-control-add'] = $.proxy(add, AccessControl, collections);
+    template = Template[controller.template];
+
+    template.rendered = rendered;
+    template.events(events);
+  };
+
+  return AccessControl;
+})();

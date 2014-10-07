@@ -1,3 +1,27 @@
+.access-control-add {
+  background-color: transparent;
+  border: 0px none transparent;
+  color: $color-gray;
+  @include transition(background-color 0.1s, color 0.1s);
+  width: 100%;
+  height: 48px;
+
+  &:hover {
+    background-color: $color-green;
+    color: $color-white;
+  }
+}
+
+.access-control-column {
+  &:first-of-type {
+    width: 100%;
+  }
+
+  &:last-of-type {
+    width: 48px;
+  }
+}
+
 .access-control-content {
   position: absolute;
   top: $layout-margin;
@@ -10,22 +34,74 @@
   height: auto;
 }
 
+.access-control-data {
+  tr {
+    &:hover {
+      td {
+        background-color: $color-silver;
+
+        &:first-of-type {
+          padding-left: $layout-margin;
+        }
+      }
+
+      .access-control-remove {
+        opacity: 1;
+      }
+    }
+
+    td {
+      &:first-of-type {
+        border-radius: 3px 0px 0px 3px;
+        @include transition(padding-left 0.1s ease-out);
+      }
+
+      &:last-of-type {
+        border-radius: 0px 3px 3px 0px;
+      }
+    }
+  }
+}
+
+.access-control-entry {
+  background-color: transparent;
+  border: 0px none transparent;
+  display: block;
+  padding: 0px $layout-margin 0px 0px;
+  width: 100%;
+  height: 48px;
+}
+
 .access-control-list {
   float: left;
   margin: $layout-margin ($layout-margin / 2) $layout-margin ($layout-margin / 2);
   @include calc(width, '50% - ' + $layout-margin);
   @include calc(height, '100% - ' + ($layout-margin * 2));
 
-  &:first-child, &:last-child {
+  &:first-of-type, &:last-of-type {
     @include calc(width, '50% - ' + ($layout-margin * 1.5));
   }
 
-  &:first-child {
+  &:first-of-type {
     margin-left: $layout-margin;
   }
 
-  &:last-child {
+  &:last-of-type {
     margin-right: $layout-margin;
+  }
+}
+
+.access-control-remove {
+  background-color: $color-red;
+  border: 0px none transparent;
+  color: $color-white;
+  opacity: 0;
+  @include transition(opacity 0.1s);
+  width: 48px;
+  height: 48px;
+
+  &:hover {
+    background-color: lighten($color-red, 5%);
   }
 }
 

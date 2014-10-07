@@ -11,7 +11,8 @@ controllers.AccessControl = (function() {
       menuIndex = 2,
       menuless = false,
       path = '/access-control',
-      template = 'access-control';
+      template = 'access-control',
+      waitOn;
 
   afterAction = function() {
     var that = this;
@@ -28,6 +29,13 @@ controllers.AccessControl = (function() {
     };
   };
 
+  waitOn = function() {
+    return [
+      Meteor.subscribe('accessControlBlackList'),
+      Meteor.subscribe('accessControlWhiteList')
+    ];
+  };
+
   AccessControl = RouteController.extend({
     data: data,
     onAfterAction: afterAction,
@@ -41,6 +49,7 @@ controllers.AccessControl = (function() {
   AccessControl.menuless = menuless;
   AccessControl.path = path;
   AccessControl.template = template;
+  AccessControl.waitOn = waitOn;
 
   return AccessControl;
 })();

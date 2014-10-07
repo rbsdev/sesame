@@ -9,10 +9,28 @@
 
       <div class="access-control-content">
         <table class="access-control-data">
-          <tbody>
+          <colgroup>
+            <col class="access-control-column">
+            <col class="access-control-column">
+          </colgroup>
+          <thead>
             <tr>
-              <td></td>
+              <th colspan="2">
+                <button data-into="black" title="Add a new entry to the black list" class="access-control-add"><span class="octicon octicon-plus"></span></button>
+              </th>
             </tr>
+          </thead>
+          <tbody>
+            {{#each accessControlBlackList}}
+              <tr>
+                <td>
+                  <input type="text" value="{{entry}}" placeholder="Provide a user name or MAC address" class="access-control-entry">
+                </td>
+                <td>
+                  <button data-id="" title="Remove &#34;banana&#34; entry from the black list" class="access-control-remove"><span class="octicon octicon-x"></span></button>
+                </td>
+              </tr>
+            {{/each}}
           </tbody>
         </table>
       </div>
@@ -23,10 +41,28 @@
 
       <div class="access-control-content">
         <table class="access-control-data">
-          <tbody>
+          <colgroup>
+            <col class="access-control-column">
+            <col class="access-control-column">
+          </colgroup>
+          <thead>
             <tr>
-              <td></td>
+              <th colspan="2">
+                <button data-into="white" title="Add a new entry to the white list" class="access-control-add"><span class="octicon octicon-plus"></span></button>
+              </th>
             </tr>
+          </thead>
+          <tbody>
+            {{#each accessControlWhiteList}}
+              <tr>
+                <td>
+                  <input type="text" value="{{entry}}" placeholder="Provide a user name or MAC address" class="access-control-entry">
+                </td>
+                <td>
+                  <button data-id="" title="Remove &#34;banana&#34; entry from the white list" class="access-control-remove"><span class="octicon octicon-x"></span></button>
+                </td>
+              </tr>
+            {{/each}}
           </tbody>
         </table>
       </div>

@@ -2,18 +2,9 @@ $layout-aside: 48px;
 $layout-margin: 20px;
 $layout-space: 1px;
 
-@include keyframes(color-in) {
-  100% {
-    background-color: $color-gray;
-  }
-}
-
 * {
   position: relative;
   @include box-sizing(border-box);
-  font-family: $sans-serif;
-  font-size: 14px;
-  line-height: 1;
 }
 
 a {
@@ -30,7 +21,9 @@ body, html {
 }
 
 body {
-  @include animation(color-in 0.4s ease 0s 1 normal forwards);
+  background-color: $color-background;
+  font-family: $font-sans-serif;
+  font-size: 14px;
   color: $color-black;
   cursor: default;
 }
@@ -40,7 +33,7 @@ h1, h2, h3, th {
 }
 
 h1, h2 {
-  font-family: $serif;
+  font-family: $font-serif;
 }
 
 h1 {
@@ -69,24 +62,15 @@ table {
   @include animation(fade 0.4s ease 0s 1 reverse backwards);
 }
 
-.icon text {
-  font-family: octicons;
-  text-anchor: middle;
-  text-rendering: geometricPrecision;
-}
-
 .main {
   position: absolute;
   top: $layout-aside + $layout-margin + $layout-space;
   right: $layout-aside + $layout-margin + $layout-space;
   bottom: $layout-margin;
   left: $layout-margin;
-  background-color: $color-white;
-  box-shadow: 0px 1px 1px 0px $color-dim;
-
-  &.log-in {
-    background-color: rgba($color-dim, 0);
-  }
+  background-color: $color-foreground;
+  width: auto;
+  height: auto;
 }
 
 .main-title {

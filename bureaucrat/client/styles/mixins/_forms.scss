@@ -4,13 +4,12 @@ button, input {
 
 button, input {
   border-radius: 3px;
-  border: 2px solid $color-dim;
+  border: 0px none transparent;
   margin: 0px;
 }
 
 button {
-  background-color: $color-silver;
-  color: $color-black;
+  background-color: transparent;
 
   &, .octicon {
     cursor: pointer;
@@ -28,14 +27,10 @@ fieldset {
 }
 
 input {
-  background-color: $color-white;
-  color: $color-black;
+  background-color: transparent;
   cursor: pointer;
-  padding: 10px;
-  @include transition(background-color 0.2s);
 
   &:disabled {
-    background-color: $color-silver;
     cursor: default;
   }
 

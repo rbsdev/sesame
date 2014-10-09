@@ -15,7 +15,7 @@ views.LogIn = (function() {
       template,
       watch;
 
-  dom.field = '.log-in-field';
+  dom.input = '.log-in-input';
   dom.fieldset = '.log-in-fieldset';
 
   error = function() {
@@ -30,7 +30,7 @@ views.LogIn = (function() {
           $(this).removeClass('error')
                  .dequeue();
 
-          $dom.field.prop('disabled', false)
+          $dom.input.prop('disabled', false)
                     .focus()
                     .select();
         });
@@ -95,7 +95,7 @@ views.LogIn = (function() {
     //       $(this).removeClass('show')
     //              .dequeue();
 
-    //       $dom.field.focus()
+    //       $dom.input.focus()
     //                 .select();
 
     //       if (callback instanceof Function) {
@@ -103,7 +103,7 @@ views.LogIn = (function() {
     //       }
     //     });
 
-    $dom.field.focus().select();
+    $dom.input.focus().select();
 
     if (callback instanceof Function) {
       callback.apply(window, options);
@@ -113,22 +113,24 @@ views.LogIn = (function() {
   watch = function(event, template) {
     var password;
 
+    console.log(event.which);
+
     if (event.which != 13) {
       return;
     }
 
-    password = $dom.field.val();
+    password = $dom.input.val();
 
     if (!password.length) {
       return;
     }
 
-    $dom.field.prop('disabled', true);
+    $dom.input.prop('disabled', true);
     Meteor.loginWithPassword('root', password, loggedIn);
   };
 
   LogIn = function(controller) {
-    events['keydown .log-in-field'] = watch;
+    events['keydown ' + dom.input] = watch;
     template = Template[controller.template];
 
     template.rendered = rendered;

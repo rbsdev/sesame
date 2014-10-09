@@ -113,8 +113,6 @@ views.LogIn = (function() {
   watch = function(event, template) {
     var password;
 
-    console.log(event.which);
-
     if (event.which != 13) {
       return;
     }

@@ -1,95 +1,57 @@
 .menu {
   position: absolute;
-  top: $layout-aside + $layout-margin + $layout-space;
+  top: $layout-box + $layout-margin + $layout-space;
   right: $layout-margin;
   bottom: $layout-margin;
-  background-color: darken($color-white, 5%);
-  box-shadow: 0px 1px 1px 0px $color-dim;
-  width: $layout-aside;
+  background-color: $color-foreground;
+  width: $layout-box;
   height: auto;
 }
 
-.menu-anchor {
-  background-color: darken($color-white, 5%);
-  border-bottom: 1px solid $color-dim;
+.menu-item, .menu-log-out {
+  color: $color-background;
   display: block;
-  text-decoration: none;
-  @include transition(background-color 0.1s);
-  width: $layout-aside;
-  height: $layout-aside;
+  font-size: 2rem;
+  @include icon;
+  width: $layout-box;
+  height: $layout-box + 1;
+}
 
-  &:before {
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: -2px;
-    background-color: $color-white;
-    content: '';
-    display: block;
-    opacity: 0;
-    @include transition(opacity 0.1s);
-    width: 2px;
-    height: auto;
-  }
+.menu-item {
+  background-color: $color-foreground;
+  border-bottom: $layout-space solid $color-background;
+  line-height: $layout-box;
+  text-align: center;
+  text-decoration: none;
 
   &.active {
-    background-color: $color-white;
-    cursor: default;
-
-    &:before {
-      opacity: 1;
-    }
+    left: -1px;
+    border-right: $layout-space solid $color-background;
+    width: $layout-box + 1;
   }
 }
 
-.menu-icon {
+.menu-items {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-
-  text {
-    font-size: 32px;
-  }
-}
-
-.menu-icon-background {
-  fill: rgb(105, 105, 105);
-}
-
-.menu-icon-shadow {
-  fill: rgb(155, 155, 155);
+  top: 0px;
+  right: 0px;
+  bottom: $layout-box + 1;
+  left: 0px;
+  width: auto;
+  height: auto;
 }
 
 .menu-log-out {
   position: absolute;
-  right: 0px;
-  bottom: 0px;
-  background-color: darken($color-white, 5%);
-  border: 0px none transparent;
-  border-radius: 0px;
-  border-top: 1px solid $color-dim;
-  color: $color-gray;
-  font-family: octicons;
-  font-size: 32px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  line-height: 1;
-  width: $layout-aside;
-  height: $layout-aside;
-
-  .menu-icon {
-    top: 26px;
-    left: 29px;
-  }
-}
-
-.menu-nav {
-  position: absolute;
-  top: 0px;
-  right: 0px;
   bottom: 0px;
   left: 0px;
-  width: auto;
-  height: auto;
+  background-color: $color-foreground;
+  border-top: $layout-space solid $color-background;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    width: 9px;
+    height: 32px;
+  }
 }

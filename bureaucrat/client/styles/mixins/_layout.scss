@@ -1,4 +1,4 @@
-$layout-aside: 48px;
+$layout-box: 48px;
 $layout-margin: 20px;
 $layout-space: 1px;
 
@@ -11,7 +11,7 @@ a {
   cursor: pointer;
 }
 
-body, button, fieldset, form, h1, h2, h3, p, pre, td, th {
+body, button, fieldset, form, h1, h2, p, pre, td, th, ul {
   margin: 0px;
   padding: 0px;
 }
@@ -22,36 +22,33 @@ body, html {
 
 body {
   background-color: $color-background;
-  font-family: $font-sans-serif;
-  font-size: 14px;
-  color: $color-black;
-  cursor: default;
 }
 
-h1, h2, h3, th {
+h1, h2, th {
   font-weight: normal;
 }
 
 h1, h2 {
   font-family: $font-serif;
+  font-size: 2rem;
 }
 
-h1 {
-  font-size: 2em;
-}
-
-h2 {
-  font-size: 2em;
-}
-
-h3 {
-  font-size: 1.2em;
+html {
+  color: $color-text;
+  cursor: default;
+  font-family: $font-sans-serif;
+  font-size: 16px;
+  line-height: 1;
 }
 
 table {
   border-collapse: collapse;
   table-layout: fixed;
   width: 100%;
+}
+
+ul {
+  list-style: none;
 }
 
 .float-left {
@@ -64,8 +61,8 @@ table {
 
 .main {
   position: absolute;
-  top: $layout-aside + $layout-margin + $layout-space;
-  right: $layout-aside + $layout-margin + $layout-space;
+  top: $layout-box + $layout-margin + $layout-space;
+  right: $layout-box + $layout-margin + $layout-space;
   bottom: $layout-margin;
   left: $layout-margin;
   background-color: $color-foreground;

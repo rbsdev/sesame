@@ -4,37 +4,24 @@
   right: $layout-margin;
   left: $layout-margin;
   width: auto;
-  height: $layout-aside;
+  height: $layout-box;
 
-  &:after {
+  &:before {
     position: absolute;
-    right: 0px;
-    bottom: -1px;
-    left: 0px;
-    background-color: $color-gray;
-    content: '';
-    width: auto;
-    height: 1px;
+    bottom: -4px;
+    left: -2px;
+    color: $color-foreground;
+    content: '\f08c';
+    @include icon;
+    font-size: 2rem;
   }
 }
 
 .header-title {
   position: absolute;
-  bottom: -5px;
+  bottom: 0px;
   left: 34px;
-  color: $color-white;
-
-  &:before {
-    position: absolute;
-    top: -5px;
-    left: -36px;
-    content: '\f08c';
-    font-family: octicons;
-    font-size: 32px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    line-height: 1;
-    width: 28px;
-    height: 32px;
-  }
+  color: $color-foreground;
+  overflow: hidden;
+  height: 1.6rem;
 }

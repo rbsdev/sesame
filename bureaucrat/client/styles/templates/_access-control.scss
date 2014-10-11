@@ -1,112 +1,97 @@
+$bussines-hour-size: $layout-margin + 74px;
+
 .access-control-add {
-  background-color: transparent;
-  border: 0px none transparent;
-  color: $color-gray;
+  background-color: $color-foreground;
+  color: $color-background;
+  @include icon;
+  font-size: 1rem;
   @include transition(background-color 0.1s, color 0.1s);
   width: 100%;
-  height: 48px;
+  height: $layout-box;
 
   &:hover {
     background-color: $color-green;
-    color: $color-white;
+    color: $color-foreground;
   }
 }
 
-.access-control-column {
-  &:first-of-type {
-    width: 100%;
-  }
+.access-control-bussines-hour {
+  @include calc(top, '100% - ' + $bussines-hour-size);
+  right: $layout-margin;
+  bottom: $layout-margin;
+  @include calc(left, '50% + ' + ($layout-margin / 2));
+  width: auto;
+  height: auto;
 
-  &:last-of-type {
-    width: 48px;
+  .access-control-data {
+    border: 0px none transparent;
+
+    &:before {
+      position: absolute;
+      top: 50%;
+      right: $layout-box / 2;
+      left: $layout-box / 2;
+      background-color: $color-foreground;
+      content: '';
+      display: block;
+      width: auto;
+      height: $layout-space;
+    }
   }
 }
 
-.access-control-content {
-  position: absolute;
+.access-control-black-list {
   top: $layout-margin;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  overflow: scroll;
-  -webkit-overflow-scrolling: touch;
+  @include calc(right, '50% + ' + ($layout-margin / 2));
+  bottom: $layout-margin;
+  left: $layout-margin;
   width: auto;
   height: auto;
 }
 
+.access-control-block {
+  position: absolute;
+}
+
 .access-control-data {
-  tr {
-    &:hover {
-      td {
-        background-color: $color-silver;
-
-        &:first-of-type {
-          padding-left: $layout-margin;
-        }
-      }
-
-      .access-control-remove {
-        opacity: 1;
-      }
-    }
-
-    td {
-      &:first-of-type {
-        border-radius: 3px 0px 0px 3px;
-        @include transition(padding-left 0.1s ease-out);
-      }
-
-      &:last-of-type {
-        border-radius: 0px 3px 3px 0px;
-      }
-    }
-  }
-}
-
-.access-control-entry {
-  background-color: transparent;
-  border: 0px none transparent;
+  position: absolute;
+  top: 24px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: $color-background;
+  border: $layout-space solid $color-background;
   display: block;
-  padding: 0px $layout-margin 0px 0px;
-  width: 100%;
-  height: 48px;
+  width: auto;
+  height: auto;
 }
 
-.access-control-list {
-  float: left;
-  margin: $layout-margin ($layout-margin / 2) $layout-margin ($layout-margin / 2);
-  @include calc(width, '50% - ' + $layout-margin);
-  @include calc(height, '100% - ' + ($layout-margin * 2));
-
-  &:first-of-type, &:last-of-type {
-    @include calc(width, '50% - ' + ($layout-margin * 1.5));
-  }
-
-  &:first-of-type {
-    margin-left: $layout-margin;
-  }
-
-  &:last-of-type {
-    margin-right: $layout-margin;
-  }
-}
-
-.access-control-remove {
-  background-color: $color-red;
-  border: 0px none transparent;
-  color: $color-white;
-  opacity: 0;
-  @include transition(opacity 0.1s);
-  width: 48px;
-  height: 48px;
-
-  &:hover {
-    background-color: lighten($color-red, 5%);
-  }
-}
-
-.access-control-title {
+.access-control-end, .access-control-start {
   position: absolute;
   top: 0px;
-  left: 0px;
+  background-color: $color-foreground;
+  border: $layout-space solid $color-background;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+  cursor: grab;
+  width: $layout-box * (1 * 2);
+  height: $layout-box + (1 * 2);
+}
+
+.access-control-start {
+  left: 10%;
+}
+
+.access-control-end {
+  left: 90%;
+  @include transform(translateX(-100%));
+}
+
+.access-control-white-list {
+  top: $layout-margin;
+  right: $layout-margin;
+  bottom: $layout-margin + $bussines-hour-size;
+  @include calc(left, '50% + ' + ($layout-margin / 2));
+  width: auto;
+  height: auto;
 }

@@ -1,74 +1,44 @@
 <template name="access-control">
   <main class="main access-control">
+    <section class="access-control-block access-control-black-list">
+      <h3 class="access-control-title">black list</h3>
+
+      <div class="access-control-data">
+        {{#each accessControlBlackList}}
+          <fieldset class="access-control-set">
+            <input type="text" value="{{entry}}" placeholder="provide a user id or mac address" class="access-control-entry">
+          </fieldset>
+        {{/each}}
+
+        <button data-into="black" class="access-control-add">&#61533;</button>
+      </div>
+    </section>
+
+    <section class="access-control-block access-control-white-list">
+      <h3>white list</h3>
+
+      <div class="access-control-data">
+        {{#each accessControlWhiteList}}
+          <fieldset class="access-control-set">
+            <input type="text" value="{{entry}}" placeholder="provide a user id or mac address" class="access-control-entry">
+          </fieldset>
+        {{/each}}
+
+        <button data-into="white" class="access-control-add">&#61533;</button>
+      </div>
+    </section>
+
+    <section class="access-control-block access-control-bussines-hour">
+      <h3>business hours</h3>
+
+      <div class="access-control-data">
+        <div class="access-control-start">
+          00:00
+        </div>
+        <div class="access-control-end">
+          00:00
+        </div>
+      </div>
+    </section>
   </main>
-
-  <!-- <main class="main access-control">
-    <h2 class="main-title">
-      access control
-    </h2>
-
-    <section class="access-control-list">
-      <h3 class="access-control-title">Black list</h3>
-
-      <div class="access-control-content">
-        <table class="access-control-data">
-          <colgroup>
-            <col class="access-control-column">
-            <col class="access-control-column">
-          </colgroup>
-          <thead>
-            <tr>
-              <th colspan="2">
-                <button data-into="black" title="Add a new entry to the black list" class="access-control-add"><span class="octicon octicon-plus"></span></button>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {{#each accessControlBlackList}}
-              <tr>
-                <td>
-                  <input type="text" value="{{entry}}" placeholder="Provide a user name or MAC address" class="access-control-entry">
-                </td>
-                <td>
-                  <button data-id="" title="Remove &#34;banana&#34; entry from the black list" class="access-control-remove"><span class="octicon octicon-x"></span></button>
-                </td>
-              </tr>
-            {{/each}}
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="access-control-list">
-      <h3 class="access-control-title">White list</h3>
-
-      <div class="access-control-content">
-        <table class="access-control-data">
-          <colgroup>
-            <col class="access-control-column">
-            <col class="access-control-column">
-          </colgroup>
-          <thead>
-            <tr>
-              <th colspan="2">
-                <button data-into="white" title="Add a new entry to the white list" class="access-control-add"><span class="octicon octicon-plus"></span></button>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {{#each accessControlWhiteList}}
-              <tr>
-                <td>
-                  <input type="text" value="{{entry}}" placeholder="Provide a user name or MAC address" class="access-control-entry">
-                </td>
-                <td>
-                  <button data-id="" title="Remove &#34;banana&#34; entry from the white list" class="access-control-remove"><span class="octicon octicon-x"></span></button>
-                </td>
-              </tr>
-            {{/each}}
-          </tbody>
-        </table>
-      </div>
-    </section>
-  </main> -->
 </template>

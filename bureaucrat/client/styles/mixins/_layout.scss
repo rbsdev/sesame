@@ -11,7 +11,7 @@ a {
   cursor: pointer;
 }
 
-body, button, fieldset, form, h1, h2, p, pre, td, th, ul {
+body, button, fieldset, form, h1, h2, h3, p, pre, td, th, ul {
   margin: 0px;
   padding: 0px;
 }
@@ -22,15 +22,22 @@ body, html {
 
 body {
   background-color: $color-background;
+  min-width: 800px;
+  min-height: 400px;
 }
 
-h1, h2, th {
+h1, h2, h3, th {
   font-weight: normal;
 }
 
 h1, h2 {
   font-family: $font-serif;
   font-size: 2rem;
+}
+
+h3 {
+  color: $color-background;
+  font-size: 1rem;
 }
 
 html {

@@ -11,7 +11,7 @@ Logs = function(controller) {
   var that = this;
 
   that.controller = controller;
-  that.template = Template[controller.template];
+  that.template = Template[controller.section.template];
 
   that.template.rendered = rendered.bind(that);
 };

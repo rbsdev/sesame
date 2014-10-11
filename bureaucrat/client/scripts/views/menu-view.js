@@ -51,13 +51,9 @@ views.Menu = (function() {
     var anchors = data.anchors.get();
 
     _.each(sortedControllers, function(controller, name) {
-      if (!controller.menuless) {
-        anchors[controller.template] = {
-          active: isActive(controller),
-          humanName: controller.humanName,
-          icon: controller.icon,
-          template: controller.template
-        };
+      if (!controller.section.menuless) {
+        anchors[controller.section.template] = controller.section;
+        anchors[controller.section.template].active = isActive(controller);
       }
     });
   };
@@ -66,7 +62,7 @@ views.Menu = (function() {
     events['click .menu-log-out'] = logOut;
 
     sortedControllers = _.sortBy(controllers, function(controller) {
-      return controller.menuIndex;
+      return controller.section.menuIndex;
     });
 
     template = Template['menu'];

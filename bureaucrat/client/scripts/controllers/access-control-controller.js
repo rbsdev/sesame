@@ -5,14 +5,18 @@ controllers.AccessControl = (function() {
   var afterAction,
       AccessControl,
       data,
-      headerless = false,
-      humanName = 'Access Control',
-      icon = '&#61495;',
-      menuIndex = 2,
-      menuless = false,
-      path = '/access-control',
-      template = 'access-control',
+      section,
       waitOn;
+
+  section = {
+    headerless: false,
+    humanName: 'Access Control',
+    icon: '&#61495;',
+    menuIndex: 2,
+    menuless: false,
+    path: '/access-control',
+    template: 'access-control'
+  };
 
   afterAction = function() {
     var that = this;
@@ -23,10 +27,7 @@ controllers.AccessControl = (function() {
   };
 
   data = function() {
-    return {
-      headerless: headerless,
-      menuless: menuless
-    };
+    return section;
   };
 
   waitOn = function() {
@@ -42,13 +43,7 @@ controllers.AccessControl = (function() {
     view: null
   });
 
-  AccessControl.headerless = headerless;
-  AccessControl.humanName = humanName;
-  AccessControl.icon = icon;
-  AccessControl.menuIndex = menuIndex;
-  AccessControl.menuless = menuless;
-  AccessControl.path = path;
-  AccessControl.template = template;
+  AccessControl.section = section;
   AccessControl.waitOn = waitOn;
 
   return AccessControl;

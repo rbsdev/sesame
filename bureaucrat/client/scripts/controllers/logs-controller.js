@@ -3,15 +3,19 @@ var bureaucrat = this.bureaucrat || (this.bureaucrat = { }),
 
 controllers.Logs = (function() {
   var afterAction,
-      Logs,
       data,
-      headerless = false,
-      humanName = 'Logs',
-      icon = '&#61441;',
-      menuIndex = 3,
-      menuless = false,
-      path = '/logs',
-      template = 'logs';
+      Logs,
+      section;
+
+  section = {
+    headerless: false,
+    humanName: 'Logs',
+    icon: '&#61441;',
+    menuIndex: 3,
+    menuless: false,
+    path: '/logs',
+    template: 'logs'
+  };
 
   afterAction = function() {
     var that = this;
@@ -22,10 +26,7 @@ controllers.Logs = (function() {
   };
 
   data = function() {
-    return {
-      headerless: headerless,
-      menuless: menuless
-    };
+    return section;
   };
 
   Logs = RouteController.extend({
@@ -34,13 +35,7 @@ controllers.Logs = (function() {
     view: null
   });
 
-  Logs.headerless = headerless;
-  Logs.humanName = humanName;
-  Logs.icon = icon;
-  Logs.menuIndex = menuIndex;
-  Logs.menuless = menuless;
-  Logs.path = path;
-  Logs.template = template;
+  Logs.section = section;
 
   return Logs;
 })();

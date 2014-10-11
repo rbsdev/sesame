@@ -17,6 +17,15 @@
   }
 }
 
+.header-subtitle {
+  position: absolute;
+  bottom: 0px;
+  left: 196px;
+  color: $color-foreground;
+  overflow: hidden;
+  height: 1.6rem;
+}
+
 .header-title {
   position: absolute;
   bottom: 0px;

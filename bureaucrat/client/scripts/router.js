@@ -15,10 +15,10 @@ configure = function() {
 };
 
 route = function(controller, name) {
-  Router.route(controller.template, {
+  Router.route(controller.section.template, {
     controller: controller,
-    path: controller.path,
-    template: controller.template
+    path: controller.section.path,
+    template: controller.section.template
   });
 };
 

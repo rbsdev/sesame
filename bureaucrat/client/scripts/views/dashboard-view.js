@@ -1,19 +1,31 @@
 var bureaucrat = this.bureaucrat || (this.bureaucrat = { }),
-    views = bureaucrat.views || (bureaucrat.views = { }),
-    Dashboard,
-    rendered;
+    views = bureaucrat.views || (bureaucrat.views = { });
 
-rendered = function() {
-  
-};
+views.Dashboard = (function() {
+  var Dashboard,
+      controller,
+      $dom = { },
+      dom = { },
+      events = { },
+      jquerify,
+      rendered,
+      template;
 
-Dashboard = function(controller) {
-  var that = this;
+  jquerify = function(query, element, dom) {
+    $dom[element] = $(query);
+  };
 
-  that.controller = controller;
-  that.template = Template[controller.template];
+  rendered = function() {
+    _.each(dom, jquerify);
+  };
 
-  that.template.rendered = rendered.bind(that);
-};
+  Dashboard = function(control) {
+    controller = control;
+    template = Template[controller.section.template];
 
-views.Dashboard = Dashboard;
+    template.rendered = rendered;
+    template.events(events);
+  };
+
+  return Dashboard;
+})();

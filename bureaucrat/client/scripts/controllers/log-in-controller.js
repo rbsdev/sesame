@@ -4,12 +4,16 @@ var bureaucrat = this.bureaucrat || (this.bureaucrat = { }),
 controllers.LogIn = (function() {
   var afterAction,
       data,
-      headerless = true,
-      humanName = 'Log-in',
       LogIn,
-      menuless = true,
-      path = '/log-in',
-      template = 'log-in';
+      section;
+
+  section = {
+    headerless: true,
+    humanName: 'Log-in',
+    menuless: true,
+    path: '/log-in',
+    template: 'log-in'
+  };
 
   afterAction = function() {
     var that = this;
@@ -20,10 +24,7 @@ controllers.LogIn = (function() {
   };
 
   data = function() {
-    return {
-      headerless: headerless,
-      menuless: menuless
-    };
+    return section;
   };
 
   LogIn = RouteController.extend({
@@ -32,11 +33,7 @@ controllers.LogIn = (function() {
     view: null
   });
 
-  LogIn.headerless = headerless;
-  LogIn.humanName = humanName;
-  LogIn.menuless = menuless;
-  LogIn.path = path;
-  LogIn.template = template;
+  LogIn.section = section;
 
   return LogIn;
 })();

@@ -129,7 +129,7 @@ views.LogIn = (function() {
 
   LogIn = function(controller) {
     events['keydown ' + dom.input] = watch;
-    template = Template[controller.template];
+    template = Template[controller.section.template];
 
     template.rendered = rendered;
     template.events(events);

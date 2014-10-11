@@ -5,13 +5,17 @@ controllers.Dashboard = (function() {
   var afterAction,
       Dashboard,
       data,
-      headerless = false,
-      humanName = 'Dashboard',
-      icon = '&#61565;',
-      menuIndex = 1,
-      menuless = false,
-      path = '/',
-      template = 'dashboard';
+      section;
+
+  section = {
+    headerless: false,
+    humanName: 'Dashboard',
+    icon: '&#61565;',
+    menuIndex: 1,
+    menuless: false,
+    path: '/',
+    template: 'dashboard'
+  };
 
   afterAction = function() {
     var that = this;
@@ -22,10 +26,7 @@ controllers.Dashboard = (function() {
   };
 
   data = function() {
-    return {
-      headerless: headerless,
-      menuless: menuless
-    };
+    return section;
   };
 
   Dashboard = RouteController.extend({
@@ -34,13 +35,7 @@ controllers.Dashboard = (function() {
     view: null
   });
 
-  Dashboard.headerless = headerless;
-  Dashboard.humanName = humanName;
-  Dashboard.icon = icon;
-  Dashboard.menuIndex = menuIndex;
-  Dashboard.menuless = menuless;
-  Dashboard.path = path;
-  Dashboard.template = template;
+  Dashboard.section = section;
 
   return Dashboard;
 })();

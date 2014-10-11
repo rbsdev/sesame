@@ -43,7 +43,7 @@ views.AccessControl = (function() {
   AccessControl = function(control) {
     controller = control;
     events['click .access-control-add'] = $.proxy(add, AccessControl, collections);
-    template = Template[controller.template];
+    template = Template[controller.section.template];
 
     template.rendered = rendered;
     template.events(events);

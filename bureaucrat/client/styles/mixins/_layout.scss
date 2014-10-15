@@ -22,6 +22,9 @@ body, html {
 
 body {
   background-color: $color-background;
+  margin: 0px auto 0px auto;
+  max-width: 1200px;
+  max-height: 800px;
   min-width: 800px;
   min-height: 400px;
 }
@@ -64,6 +67,10 @@ ul {
 
 .hide {
   @include animation(fade 0.4s ease 0s 1 reverse backwards);
+}
+
+.hidden {
+  display: none;
 }
 
 .main {

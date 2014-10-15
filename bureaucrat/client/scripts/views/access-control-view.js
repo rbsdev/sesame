@@ -1,5 +1,6 @@
 var bureaucrat = this.bureaucrat || (this.bureaucrat = { }),
     collections = bureaucrat.collections || (bureaucrat.collections = { }),
+    library = bureaucrat.library || (bureaucrat.library = { }),
     views = bureaucrat.views || (bureaucrat.views = { });
 
 views.AccessControl = (function() {
@@ -7,6 +8,7 @@ views.AccessControl = (function() {
       controller,
       $dom = { },
       dom = { },
+      drag,
       events = { },
       findCollection,
       insert,
@@ -17,11 +19,33 @@ views.AccessControl = (function() {
       template,
       update;
 
-  dom.field = '.access-control-add';
+  dom.data = '.access-control-bussines-hour .access-control-data';
+  dom.end = '.access-control-end';
+  dom.start = '.access-control-start';
 
   map = {
     black: 'AccessControlBlackList',
     white: 'AccessControlWhiteList'
+  };
+
+  drag = function(event, ui) {
+    var limit = $dom.data.width() - $dom.end.width() - 3,
+        minutes,
+        time;
+
+    if (ui.position.left <= 0) {
+      ui.position.left = 0;
+    }
+
+    if (ui.position.left >= limit) {
+      ui.position.left = limit;
+    }
+
+    minutes = (ui.position.left * 1439) / limit;
+    minutes -= minutes % 5;
+
+    time = library.pad(minutes / 60 >> 0) + ':' + library.pad(minutes % 60 >> 0);
+    $(event.target).html(time);
   };
 
   findCollection = function(element) {
@@ -61,7 +85,15 @@ views.AccessControl = (function() {
   };
 
   rendered = function() {
+    var options = {
+      axis: 'x',
+      drag: drag
+    };;
+
     _.each(dom, jquerify);
+
+    $dom.end.draggable(options);
+    $dom.start.draggable(options);
   };
 
   update = function(event, template) {

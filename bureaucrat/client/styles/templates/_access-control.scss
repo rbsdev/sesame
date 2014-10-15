@@ -25,6 +25,7 @@ $bussines-hour-size: $layout-margin + 74px;
 
   .access-control-data {
     border: 0px none transparent;
+    overflow: hidden;
 
     &:before {
       position: absolute;
@@ -75,13 +76,14 @@ $bussines-hour-size: $layout-margin + 74px;
   cursor: -moz-grab;
   cursor: -webkit-grab;
   cursor: grab;
+  line-height: $layout-box + (1 * 2);
+  text-align: center;
   width: $layout-box * (1 * 2);
   height: $layout-box + (1 * 2);
 }
 
 .access-control-end {
-  left: 90%;
-  @include transform(translateX(-100%));
+  left: 50%;
 }
 
 .access-control-entry, .access-control-name {

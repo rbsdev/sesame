@@ -1,4 +1,5 @@
 var bureaucrat = this.bureaucrat || (this.bureaucrat = { }),
+    collections = bureaucrat.collections || (bureaucrat.collections = { }),
     controllers = bureaucrat.controllers || (bureaucrat.controllers = { });
 
 controllers.AccessControl = (function() {
@@ -27,7 +28,12 @@ controllers.AccessControl = (function() {
   };
 
   data = function() {
-    return section;
+    var data = section;
+
+    data.blackList = collections.AccessControlBlackList.find();
+    data.whiteList = collections.AccessControlWhiteList.find();
+
+    return data;
   };
 
   waitOn = function() {
@@ -40,11 +46,11 @@ controllers.AccessControl = (function() {
   AccessControl = RouteController.extend({
     data: data,
     onAfterAction: afterAction,
-    view: null
+    view: null,
+    waitOn: waitOn
   });
 
   AccessControl.section = section;
-  AccessControl.waitOn = waitOn;
 
   return AccessControl;
 })();

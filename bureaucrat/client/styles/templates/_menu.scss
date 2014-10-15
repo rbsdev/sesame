@@ -14,7 +14,7 @@
   font-size: 2rem;
   @include icon;
   width: $layout-box;
-  height: $layout-box + 1;
+  height: $layout-box + $layout-space;
 }
 
 .menu-item {
@@ -25,9 +25,9 @@
   text-decoration: none;
 
   &.active {
-    left: -1px;
+    left: -$layout-space;
     border-right: $layout-space solid $color-background;
-    width: $layout-box + 1;
+    width: $layout-box + $layout-space;
   }
 }
 
@@ -35,7 +35,7 @@
   position: absolute;
   top: 0px;
   right: 0px;
-  bottom: $layout-box + 1;
+  bottom: $layout-box + $layout-space;
   left: 0px;
   width: auto;
   height: auto;

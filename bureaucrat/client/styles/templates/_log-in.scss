@@ -8,7 +8,8 @@
 
 .log-in-input {
   background-color: $color-background;
-  border: 1px solid $color-foreground;
+  border: $layout-space solid $color-foreground;
+  border-radius: 3px;
   color: $color-foreground;
   font-size: 2rem;
   padding: 4px;

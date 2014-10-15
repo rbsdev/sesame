@@ -1,10 +1,8 @@
 button, input {
-  outline: none;
-}
-
-button, input {
   border: 0px none transparent;
+  font-size: 0.875rem;
   margin: 0px;
+  outline: none;
 }
 
 button {
@@ -27,7 +25,6 @@ fieldset {
 
 input {
   background-color: transparent;
-  border-radius: 3px;
   cursor: pointer;
 
   &:disabled {
@@ -36,5 +33,9 @@ input {
 
   &:focus {
     cursor: text;
+  }
+
+  @include placeholder {
+    color: $color-background;
   }
 }

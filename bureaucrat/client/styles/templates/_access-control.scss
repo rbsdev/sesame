@@ -1,8 +1,8 @@
 $bussines-hour-size: $layout-margin + 74px;
 
 .access-control-add {
-  background-color: $color-foreground;
-  color: $color-background;
+  background-color: rgba($color-green, 0);
+  color: $color-foreground;
   @include icon;
   font-size: 1rem;
   @include transition(background-color 0.1s, color 0.1s);
@@ -62,6 +62,7 @@ $bussines-hour-size: $layout-margin + 74px;
   background-color: $color-background;
   border: $layout-space solid $color-background;
   display: block;
+  overflow: scroll;
   width: auto;
   height: auto;
 }
@@ -78,13 +79,47 @@ $bussines-hour-size: $layout-margin + 74px;
   height: $layout-box + (1 * 2);
 }
 
-.access-control-start {
-  left: 10%;
-}
-
 .access-control-end {
   left: 90%;
   @include transform(translateX(-100%));
+}
+
+.access-control-entry, .access-control-name {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  font-size: 0.875rem;
+  padding: 16px;
+  width: 100%;
+  height: auto;
+}
+
+.access-control-entry {
+  left: 0px;
+}
+
+.access-control-name {
+  left: 50%;
+  border-left: $layout-space solid $color-background;
+  padding-left: 8px - $layout-space;
+  width: 50%;
+}
+
+.access-control-set {
+  background-color: $color-foreground;
+  margin-bottom: $layout-space;
+  @include transition(background-color 0.1s);
+  width: 100%;
+  height: 48px;
+
+  &:hover {
+    background-color: darken($color-foreground, 5%);
+  }
+}
+
+.access-control-start {
+  left: 10%;
 }
 
 .access-control-white-list {
@@ -94,4 +129,9 @@ $bussines-hour-size: $layout-margin + 74px;
   @include calc(left, '50% + ' + ($layout-margin / 2));
   width: auto;
   height: auto;
+
+  .access-control-entry {
+    width: 50%;
+    padding-right: 8px;
+  }
 }

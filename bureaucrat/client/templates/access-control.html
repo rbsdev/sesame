@@ -34,12 +34,14 @@
 
       <div class="access-control-data">
         <div class="access-control-start">
-          00:00
+          {{minutesToTime bussinessHours.start.minutes}}
         </div>
         <div class="access-control-end">
-          00:00
+          {{minutesToTime bussinessHours.end.minutes}}
         </div>
       </div>
     </section>
   </main>
+
+  {{setPositions}}
 </template>

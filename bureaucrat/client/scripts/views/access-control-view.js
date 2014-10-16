@@ -14,8 +14,11 @@ views.AccessControl = (function() {
       insert,
       jquerify,
       map = { },
+      minutesToTime,
       remove,
       rendered,
+      setPositions,
+      stop,
       template,
       update;
 
@@ -44,8 +47,21 @@ views.AccessControl = (function() {
     minutes = (ui.position.left * 1439) / limit;
     minutes -= minutes % 5;
 
-    time = library.pad(minutes / 60 >> 0) + ':' + library.pad(minutes % 60 >> 0);
-    $(event.target).html(time);
+    if (this == $dom.end.get(0)) {
+      collections.AccessControlBussinessHours.update('end', {
+        $set: {
+          minutes: minutes
+        }
+      });
+    }
+
+    if (this == $dom.start.get(0)) {
+      collections.AccessControlBussinessHours.update('start', {
+        $set: {
+          minutes: minutes
+        }
+      });
+    }
   };
 
   findCollection = function(element) {
@@ -72,6 +88,10 @@ views.AccessControl = (function() {
     $dom[element] = $(query);
   };
 
+  minutesToTime = function(minutes) {
+    return library.pad(minutes / 60 >> 0) + ':' + library.pad(minutes % 60 >> 0);
+  };
+
   remove = function(event, template) {
     var collection = findCollection(event.currentTarget);
 
@@ -87,13 +107,41 @@ views.AccessControl = (function() {
   rendered = function() {
     var options = {
       axis: 'x',
-      drag: drag
-    };;
+      drag: drag,
+      stop: stop
+    };
 
     _.each(dom, jquerify);
 
     $dom.end.draggable(options);
     $dom.start.draggable(options);
+  };
+
+  setPositions = function() {
+    var limit,
+        endPosition,
+        startPosition;
+
+    if (!this.bussinessHours.end || !this.bussinessHours.start) {
+      return;
+    }
+
+    limit = $dom.data.width() - $dom.end.width() - 3;
+
+    endPosition = (this.bussinessHours.end.minutes * limit) / 1439;
+    startPosition = (this.bussinessHours.start.minutes * limit) / 1439;
+
+    $dom.end.css({
+      left: endPosition + 'px'
+    });
+
+    $dom.start.css({
+      left: startPosition + 'px'
+    })
+  };
+
+  stop = function(event, ui) {
+
   };
 
   update = function(event, template) {
@@ -123,6 +171,8 @@ views.AccessControl = (function() {
   };
 
   AccessControl = function(control) {
+    var helpers;
+
     controller = control;
 
     events['click .access-control-add'] = insert;
@@ -131,8 +181,14 @@ views.AccessControl = (function() {
     events['keyup .access-control-entry'] = _.throttle(update, 300);
     events['keyup .access-control-name'] = _.throttle(update, 300);
 
+    helpers = {
+      minutesToTime: minutesToTime,
+      setPositions: setPositions
+    };
+
     template = Template[controller.section.template];
 
+    template.helpers(helpers);
     template.rendered = rendered;
     template.events(events);
   };

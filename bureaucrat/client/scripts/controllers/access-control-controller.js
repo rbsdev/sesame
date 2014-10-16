@@ -33,12 +33,22 @@ controllers.AccessControl = (function() {
     data.blackList = collections.AccessControlBlackList.find();
     data.whiteList = collections.AccessControlWhiteList.find();
 
+    data.bussinessHours = {
+      end: collections.AccessControlBussinessHours.findOne({
+        _id: 'end'
+      }),
+      start: collections.AccessControlBussinessHours.findOne({
+        _id: 'start'
+      })
+    };
+
     return data;
   };
 
   waitOn = function() {
     return [
       Meteor.subscribe('accessControlBlackList'),
+      Meteor.subscribe('accessControlBussinessHours'),
       Meteor.subscribe('accessControlWhiteList')
     ];
   };

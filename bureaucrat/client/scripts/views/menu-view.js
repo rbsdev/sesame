@@ -59,14 +59,20 @@ views.Menu = (function() {
   };
 
   Menu = function() {
+    var helpers;
+
     events['click .menu-log-out'] = logOut;
+
+    helpers = {
+      anchors: anchors
+    };
 
     sortedControllers = _.sortBy(controllers, function(controller) {
       return controller.section.menuIndex;
     });
 
     template = Template['menu'];
-    template.anchors = anchors;
+    template.helpers(helpers);
     template.rendered = rendered;
     template.events(events);
 

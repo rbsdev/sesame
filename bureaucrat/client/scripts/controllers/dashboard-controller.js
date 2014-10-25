@@ -12,8 +12,8 @@ controllers.Dashboard = (function() {
     humanName: 'Dashboard',
     icon: '&#61565;',
     menuIndex: 1,
-    menuless: false,
-    path: '/',
+    menuless: true,
+    path: '/dashboard',
     template: 'dashboard'
   };
 

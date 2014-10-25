@@ -12,7 +12,7 @@ controllers.Logs = (function() {
     humanName: 'Logs',
     icon: '&#61441;',
     menuIndex: 3,
-    menuless: false,
+    menuless: true,
     path: '/logs',
     template: 'logs'
   };

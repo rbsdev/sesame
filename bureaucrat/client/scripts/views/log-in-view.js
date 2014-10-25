@@ -72,7 +72,7 @@ views.LogIn = (function() {
       return;
     }
 
-    hide(Router.go.bind(Router), 'dashboard');
+    hide(Router.go.bind(Router), 'access-control');
   };
 
   rendered = function() {

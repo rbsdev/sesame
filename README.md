@@ -4,7 +4,7 @@ Grupo RBS hackathon's 2nd edition winner project! :grimacing:
 
 The project was conceived to authorize the access to the office with better ways than the current buggy fingerprint scanner. It runs inside of a [Raspberry PI](http://www.raspberrypi.org/) and has a collection of apps under its hood:
 
-<a href="https://www.meteor.com/" target="_blank"><img src="https://www.meteor.com/favicon.ico" alt="" width="16"></a>&#160;&#160;[Bureaucrat](bureaucrat)
+<a href="https://www.meteor.com/" target="_blank"><img src="https://www.meteor.com/favicon.png" alt="" width="16"></a>&#160;&#160;[Bureaucrat](bureaucrat)
 <br>
 &#160;&#160;&#160;&#160;&#160;&#160;Delivers the administration area
 
